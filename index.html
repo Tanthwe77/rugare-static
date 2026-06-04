@@ -13,14 +13,25 @@
         <div class="custom-container custom-navbar__inner">
             <a href="index.html" class="custom-brand" aria-label="Rugare Mental Health Organisation home">
                 <span class="custom-brand__logo">
-                    <img src="assets/images/Rugare-logo.png" alt="Rugare logo">
+                    <img class="custom-brand__logo-img" src="assets/images/Rugare-Copy.png" alt="Rugare Mental Health Organisation logo" width="1974" height="1385" loading="eager" decoding="async">
                 </span>
                 <span class="custom-brand__text">
                     <span class="custom-brand__name">Rugare Mental Health Organisation</span>
                     <span class="custom-brand__tag">Youth-led support, awareness, and healing in Malawi</span>
                 </span>
             </a>
-            <nav class="custom-navbar__nav" aria-label="Primary">
+            <button type="button" class="custom-navbar__toggle" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+                <span class="custom-navbar__toggle-icon" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+            <nav id="site-nav" class="custom-navbar__nav" aria-label="Primary">
+                <div class="custom-navbar__nav-head">
+                    <span class="custom-navbar__nav-label">Menu</span>
+                    <button type="button" class="custom-navbar__close" data-nav-close aria-label="Close menu">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
                 <a href="index.html" class="custom-navbar__link is-active">Home</a>
                 <a href="about.html" class="custom-navbar__link">About</a>
                 <a href="programs.html" class="custom-navbar__link">Programs</a>
@@ -28,82 +39,49 @@
                 <a href="contact.html" class="custom-navbar__link">Contact</a>
             </nav>
         </div>
+        <div class="custom-navbar__backdrop" data-nav-backdrop hidden aria-hidden="true"></div>
     </header>
 
     <main class="custom-main" id="main-content">
         <section class="custom-hero" aria-label="Featured stories">
             <div class="custom-hero-slider" data-hero-slider>
-                <article class="custom-hero-slide is-active" data-hero-slide aria-hidden="false">
-                    <div class="custom-hero__background">
+                <div class="custom-hero__backgrounds" aria-hidden="true">
+                    <div class="custom-hero__background is-active" data-hero-bg>
                         <img class="custom-hero__bg-img" src="assets/images/club1%20(1).jpg" alt="" loading="eager" decoding="async" fetchpriority="high">
                     </div>
-                    <div class="custom-hero__scrim" aria-hidden="true"></div>
-                    <div class="custom-container custom-hero__layout">
-                        <div class="custom-hero__content">
-                            <span class="custom-hero__eyebrow">Youth-led mental health advocacy</span>
-                            <h1 class="custom-hero__title">Changing the Narrative on Mental Health</h1>
-                            <p class="custom-hero__lead">We create safe, welcoming spaces where young people can speak openly, learn practical coping tools, and feel supported in their communities.</p>
-                            <p class="custom-hero__subline">School clubs that feel safe and uplifting — Peer-led conversations that reduce stigma and build confidence.</p>
-                            <div class="custom-hero__actions">
-                                <a class="custom-btn custom-btn--primary custom-btn--hero" href="about.html">Discover More</a>
-                                <a class="custom-btn custom-btn--secondary custom-btn--hero-secondary" href="contact.html">Get Involved</a>
-                            </div>
-                            <div class="custom-hero__highlights" aria-label="Key highlights">
-                                <span class="custom-hero__highlight">Mental health clubs</span>
-                                <span class="custom-hero__highlight">Peer support</span>
-                                <span class="custom-hero__highlight">Stigma-free spaces</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="custom-hero-slide" data-hero-slide aria-hidden="true">
-                    <div class="custom-hero__background">
+                    <div class="custom-hero__background" data-hero-bg>
                         <img class="custom-hero__bg-img" src="assets/images/ClubActivity.jpeg" alt="" loading="lazy" decoding="async">
                     </div>
-                    <div class="custom-hero__scrim" aria-hidden="true"></div>
-                    <div class="custom-container custom-hero__layout">
-                        <div class="custom-hero__content">
-                            <span class="custom-hero__eyebrow">Creative community engagement</span>
-                            <h1 class="custom-hero__title">Bringing Hope Through Events and Shared Experiences</h1>
-                            <p class="custom-hero__lead">From vision board sessions to family fun days, we design experiences that spark conversation, connection, and healing beyond the classroom.</p>
-                            <p class="custom-hero__subline">Events that build belonging — Interactive programs that turn awareness into action.</p>
-                            <div class="custom-hero__actions">
-                                <a class="custom-btn custom-btn--primary custom-btn--hero" href="about.html">Discover More</a>
-                                <a class="custom-btn custom-btn--secondary custom-btn--hero-secondary" href="contact.html">Get Involved</a>
-                            </div>
-                            <div class="custom-hero__highlights" aria-label="Key highlights">
-                                <span class="custom-hero__highlight">Vision board sessions</span>
-                                <span class="custom-hero__highlight">Community events</span>
-                                <span class="custom-hero__highlight">Creative storytelling</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="custom-hero-slide" data-hero-slide aria-hidden="true">
-                    <div class="custom-hero__background">
+                    <div class="custom-hero__background" data-hero-bg>
                         <img class="custom-hero__bg-img" src="assets/images/IMG_5465.jpg" alt="" loading="lazy" decoding="async">
                     </div>
-                    <div class="custom-hero__scrim" aria-hidden="true"></div>
-                    <div class="custom-container custom-hero__layout">
-                        <div class="custom-hero__content">
-                            <span class="custom-hero__eyebrow">Stories that travel further</span>
-                            <h1 class="custom-hero__title">Amplifying Youth Voices Across Malawi</h1>
-                            <p class="custom-hero__lead">Our campaigns and podcast help young people hear honest stories, feel less alone, and discover that support is possible.</p>
-                            <p class="custom-hero__subline">Real stories, real solidarity — Content that keeps the conversation going online and offline.</p>
+                </div>
+
+                <div class="custom-hero__scrim" aria-hidden="true"></div>
+
+                <div class="custom-container custom-hero__layout">
+                    <div class="custom-hero__content custom-hero__content--intro">
+                        <span class="custom-hero__eyebrow">Youth-led mental health advocacy</span>
+                        <h1
+                            class="custom-hero__title custom-hero__title--typewriter"
+                            data-hero-typewriter
+                            data-hero-typewriter-text="Narrative on Mental Health"
+                            aria-label="Changing the Narrative on Mental Health"
+                        >
+                            <span class="custom-hero__title-line custom-hero__title-line--fixed">Changing the</span>
+                            <span class="custom-hero__title-line custom-hero__title-line--typed">
+                                <span class="custom-hero__title-text" aria-hidden="true"></span><span class="custom-hero__title-cursor" aria-hidden="true"></span>
+                            </span>
+                        </h1>
+                        <div class="custom-hero__after-title">
+                            <p class="custom-hero__lead">We create safe, welcoming spaces where young people can speak openly, learn practical coping tools, and feel supported in their communities.</p>
                             <div class="custom-hero__actions">
                                 <a class="custom-btn custom-btn--primary custom-btn--hero" href="about.html">Discover More</a>
                                 <a class="custom-btn custom-btn--secondary custom-btn--hero-secondary" href="contact.html">Get Involved</a>
                             </div>
-                            <div class="custom-hero__highlights" aria-label="Key highlights">
-                                <span class="custom-hero__highlight">Mind Matters podcast</span>
-                                <span class="custom-hero__highlight">Awareness campaigns</span>
-                                <span class="custom-hero__highlight">Community storytelling</span>
-                            </div>
                         </div>
                     </div>
-                </article>
+                </div>
 
                 <div class="custom-hero__controls">
                     <button class="custom-hero__arrow" type="button" data-hero-prev aria-label="Show previous slide">
@@ -159,7 +137,8 @@
                         </div>
                         <div class="custom-impact-card__body">
                             <h3 class="custom-impact-card__title">Mental Health Clubs</h3>
-                            <p class="custom-impact-card__text">Establishing supportive school spaces where young people can talk openly about mental health and build everyday resilience.</p>
+                            <p class="custom-impact-card__text">Creating peer-led spaces in schools where young people access 
+                                mental health literacy, learn healthy coping strategies, and build resilience through open conversations and support.</p>
                         </div>
                     </article>
                     <article class="custom-impact-card">
@@ -167,8 +146,10 @@
                             <img src="assets/images/20250619_150002.jpg" alt="Community members gathered during a Rugare event" loading="lazy">
                         </div>
                         <div class="custom-impact-card__body">
-                            <h3 class="custom-impact-card__title">Community Events</h3>
-                            <p class="custom-impact-card__text">Family fun days, game nights, and creative gatherings that strengthen connection and encourage healthy conversations.</p>
+                            <h3 class="custom-impact-card__title">Community Engagement & Digital Awareness</h3>
+                            <p class="custom-impact-card__text">Creating safe, stigma-free spaces through community events such as family 
+                                wellness days, mental health forums, school outreach sessions, and interactive activities, alongside webinars, 
+                                digital campaigns, and our Mind Matters Podcast to increase awareness and normalize conversations around mental health.</p>
                         </div>
                     </article>
                     <article class="custom-impact-card">
@@ -176,8 +157,9 @@
                             <img src="assets/images/IMG_5283.jpg" alt="Rugare participants during a media activity" loading="lazy">
                         </div>
                         <div class="custom-impact-card__body">
-                            <h3 class="custom-impact-card__title">Mind Matters Podcast</h3>
-                            <p class="custom-impact-card__text">Youth-led audio storytelling that normalises seeking help and keeps mental health conversations visible and accessible.</p>
+                            <h3 class="custom-impact-card__title">TulaNkhawa Talks (Psychosocial Support Services)</h3>
+                            <p class="custom-impact-card__text">Providing accessible and confidential psychosocial support and referral pathways, giving young people a safe space to seek help,
+                                 heal, and navigate challenges without fear of judgment or stigma.</p>
                         </div>
                     </article>
                 </div>

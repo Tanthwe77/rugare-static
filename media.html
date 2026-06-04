@@ -13,14 +13,25 @@
         <div class="custom-container custom-navbar__inner">
             <a href="index.html" class="custom-brand" aria-label="Rugare Mental Health Organisation home">
                 <span class="custom-brand__logo">
-                    <img src="assets/images/Rugare-logo.png" alt="Rugare logo">
+                    <img class="custom-brand__logo-img" src="assets/images/Rugare-Copy.png" alt="Rugare Mental Health Organisation logo" width="1974" height="1385" loading="eager" decoding="async">
                 </span>
                 <span class="custom-brand__text">
                     <span class="custom-brand__name">Rugare Mental Health Organisation</span>
                     <span class="custom-brand__tag">Youth-led support, awareness, and healing in Malawi</span>
                 </span>
             </a>
-            <nav class="custom-navbar__nav" aria-label="Primary">
+            <button type="button" class="custom-navbar__toggle" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+                <span class="custom-navbar__toggle-icon" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+            <nav id="site-nav" class="custom-navbar__nav" aria-label="Primary">
+                <div class="custom-navbar__nav-head">
+                    <span class="custom-navbar__nav-label">Menu</span>
+                    <button type="button" class="custom-navbar__close" data-nav-close aria-label="Close menu">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
                 <a href="index.html" class="custom-navbar__link">Home</a>
                 <a href="about.html" class="custom-navbar__link">About</a>
                 <a href="programs.html" class="custom-navbar__link">Programs</a>
@@ -28,6 +39,7 @@
                 <a href="contact.html" class="custom-navbar__link">Contact</a>
             </nav>
         </div>
+        <div class="custom-navbar__backdrop" data-nav-backdrop hidden aria-hidden="true"></div>
     </header>
 
     <main class="custom-main" id="main-content">

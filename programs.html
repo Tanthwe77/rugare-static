@@ -13,14 +13,25 @@
         <div class="custom-container custom-navbar__inner">
             <a href="index.html" class="custom-brand" aria-label="Rugare Mental Health Organisation home">
                 <span class="custom-brand__logo">
-                    <img src="assets/images/Rugare-logo.png" alt="Rugare logo">
+                    <img class="custom-brand__logo-img" src="assets/images/Rugare-Copy.png" alt="Rugare Mental Health Organisation logo" width="1974" height="1385" loading="eager" decoding="async">
                 </span>
                 <span class="custom-brand__text">
                     <span class="custom-brand__name">Rugare Mental Health Organisation</span>
                     <span class="custom-brand__tag">Youth-led support, awareness, and healing in Malawi</span>
                 </span>
             </a>
-            <nav class="custom-navbar__nav" aria-label="Primary">
+            <button type="button" class="custom-navbar__toggle" data-nav-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+                <span class="custom-navbar__toggle-icon" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+            </button>
+            <nav id="site-nav" class="custom-navbar__nav" aria-label="Primary">
+                <div class="custom-navbar__nav-head">
+                    <span class="custom-navbar__nav-label">Menu</span>
+                    <button type="button" class="custom-navbar__close" data-nav-close aria-label="Close menu">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
                 <a href="index.html" class="custom-navbar__link">Home</a>
                 <a href="about.html" class="custom-navbar__link">About</a>
                 <a href="programs.html" class="custom-navbar__link is-active">Programs</a>
@@ -28,6 +39,7 @@
                 <a href="contact.html" class="custom-navbar__link">Contact</a>
             </nav>
         </div>
+        <div class="custom-navbar__backdrop" data-nav-backdrop hidden aria-hidden="true"></div>
     </header>
 
     <main class="custom-main" id="main-content">
@@ -42,41 +54,159 @@
 
         <section class="custom-section custom-section--tight">
             <div class="custom-container">
-                <span class="custom-section__eyebrow">Programs in action</span>
-                <div class="custom-program-card">
-                    <div class="custom-program-card__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 21V9l9-6 9 6v12" />
-                            <path d="M9 21v-6h6v6" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="custom-program-card__title">Mental Health Clubs in Schools</h2>
-                        <p class="custom-program-card__text">
-                            We establish and support mental health clubs in secondary schools across Malawi. These clubs provide a safe, supportive space where students
-                            can learn about mental health, share their experiences, and develop coping skills — all guided by trained peer facilitators.
-                        </p>
-                    </div>
-                </div>
+                <h2 class="custom-section__title">Programs we have in action</h2>
+                <p class="custom-section__subtitle">
+                    From school clubs and creative spaces to open conversation and confidential support — here is how Rugare shows up for young people across Malawi.
+                </p>
 
-                <div class="custom-feature-split">
-                    <div class="custom-feature-split__media">
-                        <img
-                            src="assets/images/IMG_5192.jpg"
-                            alt="Young people taking part in a Rugare vision board and group activity"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="custom-feature-split__content">
-                        <h2 class="custom-feature-split__title">Vision Board Sessions</h2>
-                        <p class="custom-feature-split__text">
-                            Our vision board sessions blend creativity with conversation. Young people reflect on their goals, identity, and well-being — building hope,
-                            connection, and practical next steps for everyday life.
-                        </p>
-                        <p class="custom-feature-split__text">
-                            We run sessions in schools and communities, adapting the format to the needs of each group.
-                        </p>
-                    </div>
+                <div class="custom-programs-list">
+                    <article class="custom-program-block">
+                        <span class="custom-program-block__tag">School &amp; peer support</span>
+                        <h3 class="custom-program-block__title">Achinyamata for Mental Health</h3>
+                        <div class="custom-program-block__layout">
+                            <div class="custom-program-block__media">
+                                <img
+                                    src="assets/images/club2.jpg"
+                                    alt="Students taking part in a Rugare school mental health club session"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <div class="custom-program-block__content">
+                                <p class="custom-program-block__text">
+                                    The Achinyamata for Mental Health program is delivered through school-based Mental Health Clubs that
+                                    introduce students to mental health awareness, how to support others, and how to build everyday
+                                    resilience. Rugare facilitators lead the clubs, with selected student leaders co-facilitating on certain days to strengthen ownership and peer learning. Alongside practical coping tools such as stress management, self-care, and early identification of mental health and substance use risks, the clubs also build a culture of peer support within schools. Students who need further help are linked to Tulankhawa Talks, our psychosocial support service for counseling, substance use prevention, and addiction support.
+                                </p>
+                                <aside class="custom-program-block__callout">
+                                    <p>Peer-led school clubs that build everyday resilience and connect students to care when they need more support.</p>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="custom-program-block__gallery" aria-label="Achinyamata for Mental Health photo gallery">
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/club1%20(1).jpg" alt="Rugare mental health club session with students" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/club2.jpg" alt="Students participating in a school mental health club" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/ClubActivity.jpeg" alt="Peer learning activity during a Rugare club meeting" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5465.jpg" alt="Rugare facilitators with students after a club session" loading="lazy">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="custom-program-block">
+                        <span class="custom-program-block__tag">Creative engagement</span>
+                        <h3 class="custom-program-block__title">YouthScape</h3>
+                        <div class="custom-program-block__layout">
+                            <div class="custom-program-block__media">
+                                <img
+                                    src="assets/images/ClubActivity.jpeg"
+                                    alt="Young people engaged in a creative Rugare YouthScape activity"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <div class="custom-program-block__content">
+                                <p class="custom-program-block__text">
+                                    YouthScape is a youth mental health engagement program in collaboration with Zaluso Arts, a dynamic creative hub and arts collective that uses visual arts, digital media, storytelling, and immersive experiences to empower young creatives and address social issues through art. The program creates safe, creative spaces where young people can openly discuss mental health and life challenges while engaging in interactive activities that make expression more natural and engaging.
+                                    Facilitators guide discussions on topics such as relationships, identity, stress, work pressures, and substance use, while creative activities help participants explore and express emotions in a relaxed environment. YouthScape promotes connection, emotional expression, and peer support, while encouraging help-seeking behavior and linking young people to Tulankhawa Talks for further psychosocial support when needed.
+                                </p>
+                                <aside class="custom-program-block__callout">
+                                    <p>Creative spaces where art and conversation make mental health feel natural, engaging, and stigma-free.</p>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="custom-program-block__gallery" aria-label="YouthScape photo gallery">
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/20250619_150002.jpg" alt="Community members at a Rugare YouthScape event" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/ClubActivity.jpeg" alt="Young people in a creative group activity" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5192.jpg" alt="Participants during an interactive YouthScape session" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5465.jpg" alt="Youth engaged in a Rugare community program" loading="lazy">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="custom-program-block">
+                        <span class="custom-program-block__tag">Media &amp; storytelling</span>
+                        <h3 class="custom-program-block__title">Mind Matters Podcast</h3>
+                        <div class="custom-program-block__layout">
+                            <div class="custom-program-block__media">
+                                <img
+                                    src="assets/images/IMG_5283.jpg"
+                                    alt="Rugare team recording and sharing Mind Matters podcast content"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <div class="custom-program-block__content">
+                                <p class="custom-program-block__text">
+                                    Our podcast hosted by the Rugare team brings together guests from different fields to talk openly about mental health and wellbeing. Through honest conversations and shared lived experiences, it creates a space where people can reflect, learn, and feel less alone in what they are going through. The podcast is built on the belief that when we share our stories, we begin to heal faster and together.
+                                </p>
+                                <aside class="custom-program-block__callout">
+                                    <p>Honest conversations and lived experiences that help young people feel heard, informed, and less alone.</p>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="custom-program-block__gallery" aria-label="Mind Matters Podcast photo gallery">
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5283.jpg" alt="Rugare team during a Mind Matters recording session" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5465.jpg" alt="Team members preparing podcast content" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/20250619_150002.jpg" alt="Community outreach linked to Rugare media work" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/club1%20(1).jpg" alt="Students engaging in open mental health conversation" loading="lazy">
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="custom-program-block">
+                        <span class="custom-program-block__tag">Psychosocial support</span>
+                        <h3 class="custom-program-block__title">Tulankhawa Talks</h3>
+                        <div class="custom-program-block__layout">
+                            <div class="custom-program-block__media">
+                                <img
+                                    src="assets/images/IMG_5192.jpg"
+                                    alt="Young people in a supportive group setting during a Rugare Tulankhawa Talks activity"
+                                    loading="lazy"
+                                >
+                            </div>
+                            <div class="custom-program-block__content">
+                                <p class="custom-program-block__text">
+                                    Tulankhawa Talks is our psychosocial support service designed to provide safe, confidential, and professional care for people experiencing emotional distress, trauma, substance use challenges, and other mental health concerns. True to its name—meaning “offload your stress”—it exists to break the fear of stigma and social exposure by offering a trusted space where people can speak freely and be supported without judgment.
+                                    We provide flexible counseling services both online and face-to-face, allowing clients to access help in the way that feels most secure and accessible to them. Tulankhawa also acts as the referral pathway from our school-based Mental Health Clubs, ensuring continuity of care when students require more structured or clinical support.
+                                </p>
+                                <aside class="custom-program-block__callout">
+                                    <p>A confidential space to offload stress and access professional support—online or face-to-face—without judgment.</p>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="custom-program-block__gallery" aria-label="Tulankhawa Talks photo gallery">
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5192.jpg" alt="Supportive group setting during a Tulankhawa Talks session" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/IMG_5465.jpg" alt="Rugare team offering psychosocial support in the community" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/20250619_150002.jpg" alt="Community members connected through Rugare support programs" loading="lazy">
+                            </figure>
+                            <figure class="custom-program-gallery__item">
+                                <img src="assets/images/club2.jpg" alt="Students referred from school clubs to continued care pathways" loading="lazy">
+                            </figure>
+                        </div>
+                    </article>
                 </div>
 
                 <div class="custom-bottom-cta">
