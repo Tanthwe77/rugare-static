@@ -155,7 +155,6 @@
     }
 
     function setOpen(open) {
-      navbar.classList.toggle('is-nav-open', open);
       toggle.classList.toggle('is-active', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -187,7 +186,7 @@
     }
 
     toggle.addEventListener('click', function () {
-      if (navbar.classList.contains('is-nav-open')) {
+      if (document.body.classList.contains('custom-nav-open')) {
         closeNav();
       } else {
         openNav();
@@ -202,7 +201,7 @@
     });
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && navbar.classList.contains('is-nav-open')) {
+      if (event.key === 'Escape' && document.body.classList.contains('custom-nav-open')) {
         closeNav();
       }
     });
