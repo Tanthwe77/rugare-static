@@ -1,0 +1,23 @@
+[build]
+  publish = "."
+  command = "echo 'Static site — no build step'"
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/programs"
+  to = "/programs.html"
+  status = 200
+
+[[redirects]]
+  from = "/media"
+  to = "/media.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200

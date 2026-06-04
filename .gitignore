@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+*.log
+.phpunit.result.cache
+.env
+.env.*
+
+/node_modules
+
+.idea/
+.vscode/
+.fleet/
+.zed/
+
+rugare.zip
+/rugare
