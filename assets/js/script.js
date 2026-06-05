@@ -795,10 +795,10 @@
   }
 
   function initProgramsNav() {
-    const nav = document.querySelector('.custom-programs-nav');
-    if (!nav) return;
+    const introNav = document.querySelector('.custom-programs-nav--intro');
+    const links = Array.from(document.querySelectorAll('.custom-programs-nav__link'));
+    if (!links.length) return;
 
-    const links = Array.from(nav.querySelectorAll('.custom-programs-nav__link'));
     const sections = links
       .map(function (link) {
         const href = link.getAttribute('href');
@@ -807,25 +807,71 @@
       })
       .filter(Boolean);
 
-    if (!sections.length) return;
+    const uniqueSections = sections.filter(function (section, index) {
+      return sections.indexOf(section) === index;
+    });
+
+    if (!uniqueSections.length) return;
+
+    const trigger = introNav || uniqueSections[0];
+    const offset = 120;
 
     function updateActive() {
-      const offset = 140;
-      let current = sections[0];
+      let current = uniqueSections[0];
 
-      sections.forEach(function (section) {
+      uniqueSections.forEach(function (section) {
         if (section.getBoundingClientRect().top <= offset) {
           current = section;
         }
       });
 
+      const inProgramsZone = trigger.getBoundingClientRect().top <= offset;
+      document.body.classList.toggle('custom-programs-nav-visible', inProgramsZone);
+
       links.forEach(function (link) {
-        const isActive = link.getAttribute('href') === '#' + current.id;
+        const isActive = inProgramsZone && link.getAttribute('href') === '#' + current.id;
         link.classList.toggle('is-active', isActive);
+        if (isActive) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+
+      uniqueSections.forEach(function (section) {
+        const isActive = inProgramsZone && section === current;
+        section.classList.toggle('is-active', isActive);
+        const blockNav = section.querySelector('.custom-program-block__nav');
+        if (blockNav) {
+          blockNav.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        }
       });
     }
 
+    links.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        const href = link.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') return;
+
+        const target = document.getElementById(href.slice(1));
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({
+          behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+          block: 'start',
+        });
+
+        if (history.replaceState) {
+          history.replaceState(null, '', href);
+        } else {
+          location.hash = href;
+        }
+      });
+    });
+
     window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive, { passive: true });
     updateActive();
   }
 })();
