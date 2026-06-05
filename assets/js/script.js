@@ -9,6 +9,9 @@
     initHeroSlider();
     initStatCounters();
     initContactForm();
+    initTeamViewToggle();
+    initTeamDirectory();
+    initProgramsNav();
     initScrollReveal();
     initNavbarScroll();
     initMobileNav();
@@ -36,10 +39,12 @@
       { parent: '.custom-values-grid', child: '.custom-value-card', step: 50 },
       { parent: '.custom-about-cards', child: '.custom-about-card', step: 55 },
       { parent: '.custom-team-grid', child: '.custom-team-card', step: 50, variant: 'scale' },
+      { parent: '.custom-team-row__cards', child: '.custom-team-card', step: 50, variant: 'scale' },
       { parent: '.custom-stats-strip__grid', child: '.custom-stat', step: 45, variant: 'scale' },
       { parent: '.custom-program-block__gallery', child: '.custom-program-gallery__item', step: 40 },
       { parent: '.custom-episode-list', child: '.custom-episode', step: 50 },
       { parent: '.custom-programs-list', child: '.custom-program-block', step: 0 },
+      { parent: '.custom-team-directory', child: '.custom-team-directory__item', step: 35 },
     ];
 
     document.querySelectorAll('.custom-about-grid').forEach(function (grid) {
@@ -198,7 +203,7 @@
     closeBtn?.addEventListener('click', closeNav);
     backdrop?.addEventListener('click', closeNav);
 
-    nav.querySelectorAll('.custom-navbar__link').forEach(function (link) {
+    nav.querySelectorAll('.custom-navbar__link:not(.custom-navbar__dropdown-trigger)').forEach(function (link) {
       link.addEventListener('click', closeNav);
     });
 
@@ -245,16 +250,12 @@
       if (!trigger) return;
 
       trigger.addEventListener('click', function (event) {
+        event.preventDefault();
         event.stopPropagation();
+
+        if (!isMobile()) return;
+
         const isOpen = dropdown.classList.contains('is-open');
-
-        if (isMobile()) {
-          closeAll(isOpen ? null : dropdown);
-          dropdown.classList.toggle('is-open', !isOpen);
-          trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-          return;
-        }
-
         closeAll(isOpen ? null : dropdown);
         dropdown.classList.toggle('is-open', !isOpen);
         trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
@@ -262,6 +263,7 @@
     });
 
     document.addEventListener('click', function () {
+      if (!isMobile()) return;
       closeAll();
     });
 
@@ -621,5 +623,209 @@
         if (submitBtn) submitBtn.disabled = false;
       }
     });
+  }
+
+  function initTeamViewToggle() {
+    const toolbar = document.querySelector('[data-team-toolbar]');
+    if (!toolbar) return;
+
+    const buttons = Array.from(toolbar.querySelectorAll('[data-team-view]'));
+    const panels = Array.from(document.querySelectorAll('[data-team-panel]'));
+    const indicator = toolbar.querySelector('.custom-view-toggle__indicator');
+    const searchInput = document.querySelector('[data-team-search]');
+    const filterButtons = Array.from(document.querySelectorAll('[data-team-filter]'));
+
+    if (!buttons.length || !panels.length) return;
+
+    function getActiveButton() {
+      return buttons.find(function (btn) {
+        return btn.classList.contains('is-active');
+      }) || buttons[0];
+    }
+
+    function updateIndicator() {
+      if (!indicator) return;
+      const activeButton = getActiveButton();
+      indicator.style.width = activeButton.offsetWidth + 'px';
+      indicator.style.transform = 'translateX(' + (activeButton.offsetLeft - 4) + 'px)';
+    }
+
+    function setView(view) {
+      buttons.forEach(function (btn) {
+        const isActive = btn.getAttribute('data-team-view') === view;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      panels.forEach(function (panel) {
+        const isActive = panel.getAttribute('data-team-panel') === view;
+        panel.hidden = !isActive;
+      });
+
+      if (view === 'card') {
+        if (searchInput) searchInput.value = '';
+        filterButtons.forEach(function (btn) {
+          const isAll = btn.getAttribute('data-team-filter') === 'all';
+          btn.classList.toggle('is-active', isAll);
+          btn.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+        });
+        document.dispatchEvent(new CustomEvent('team-search-reset'));
+      }
+
+      updateIndicator();
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setView(btn.getAttribute('data-team-view'));
+      });
+    });
+
+    window.addEventListener('resize', updateIndicator);
+    updateIndicator();
+  }
+
+  function initTeamDirectory() {
+    const directory = document.querySelector('[data-team-directory]');
+    const searchInput = document.querySelector('[data-team-search]');
+    const emptyState = document.querySelector('[data-team-directory-empty]');
+    const filterButtons = Array.from(document.querySelectorAll('[data-team-filter]'));
+    let activeTeamFilter = 'all';
+
+    if (!directory) return;
+
+    const members = Array.from(document.querySelectorAll('[data-team-member]')).map(function (card) {
+      return {
+        name: card.getAttribute('data-name') || '',
+        role: card.getAttribute('data-role') || '',
+        team: card.getAttribute('data-team') || '',
+        bio: card.getAttribute('data-bio') || '',
+        image: card.getAttribute('data-image') || '',
+      };
+    });
+
+    const roleOrder = [
+      'Leadership',
+      'Chairperson',
+      'Vice Chairperson',
+      'Secretary',
+      'Treasurer',
+      'Board Member',
+    ];
+
+    members.sort(function (a, b) {
+      const aIdx = roleOrder.indexOf(a.team);
+      const bIdx = roleOrder.indexOf(b.team);
+
+      if (aIdx !== -1 || bIdx !== -1) {
+        if (aIdx === -1) return 1;
+        if (bIdx === -1) return -1;
+        if (aIdx !== bIdx) return aIdx - bIdx;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
+
+    function renderList(filterText, teamFilter) {
+      const query = (filterText || '').trim().toLowerCase();
+      const team = teamFilter || activeTeamFilter;
+      directory.innerHTML = '';
+
+      const filtered = members.filter(function (member) {
+        if (team !== 'all' && member.team !== team) return false;
+        if (!query) return true;
+        const haystack = [member.name, member.role, member.team, member.bio]
+          .join(' ')
+          .toLowerCase();
+        return haystack.includes(query);
+      });
+
+      filtered.forEach(function (member) {
+        const item = document.createElement('li');
+        item.className = 'custom-team-directory__item';
+
+        const isLeadership = member.team === 'Leadership';
+        const badgeClass = isLeadership
+          ? 'custom-team-directory__badge custom-team-directory__badge--leadership'
+          : 'custom-team-directory__badge';
+
+        item.innerHTML =
+          '<div class="custom-team-directory__avatar">' +
+            '<img src="' + member.image + '" alt="" loading="lazy">' +
+          '</div>' +
+          '<div class="custom-team-directory__info">' +
+            '<p class="custom-team-directory__name">' + member.name + '</p>' +
+            '<p class="custom-team-directory__role">' + member.role + '</p>' +
+            (member.bio ? '<p class="custom-team-directory__bio">' + member.bio + '</p>' : '') +
+          '</div>' +
+          '<span class="' + badgeClass + '">' + member.team + '</span>';
+
+        directory.appendChild(item);
+      });
+
+      if (emptyState) {
+        emptyState.hidden = filtered.length > 0;
+      }
+    }
+
+    renderList('', 'all');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        renderList(searchInput.value, activeTeamFilter);
+      });
+    }
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeTeamFilter = btn.getAttribute('data-team-filter') || 'all';
+        filterButtons.forEach(function (filterBtn) {
+          const isActive = filterBtn === btn;
+          filterBtn.classList.toggle('is-active', isActive);
+          filterBtn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+        renderList(searchInput ? searchInput.value : '', activeTeamFilter);
+      });
+    });
+
+    document.addEventListener('team-search-reset', function () {
+      activeTeamFilter = 'all';
+      renderList('', 'all');
+    });
+  }
+
+  function initProgramsNav() {
+    const nav = document.querySelector('.custom-programs-nav');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('.custom-programs-nav__link'));
+    const sections = links
+      .map(function (link) {
+        const href = link.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') return null;
+        return document.getElementById(href.slice(1));
+      })
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    function updateActive() {
+      const offset = 140;
+      let current = sections[0];
+
+      sections.forEach(function (section) {
+        if (section.getBoundingClientRect().top <= offset) {
+          current = section;
+        }
+      });
+
+      links.forEach(function (link) {
+        const isActive = link.getAttribute('href') === '#' + current.id;
+        link.classList.toggle('is-active', isActive);
+      });
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
   }
 })();

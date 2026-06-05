@@ -56,9 +56,9 @@
                     <a href="about.html" class="custom-navbar__dropdown-link" role="menuitem">Rugare Profile</a>
                     <a href="board.html" class="custom-navbar__dropdown-link is-active" role="menuitem">Board of Directors</a>
                     <a href="our-team.html" class="custom-navbar__dropdown-link" role="menuitem">Our Team</a>
+                    <a href="programs.html" class="custom-navbar__dropdown-link" role="menuitem">Programs</a>
                 </div>
             </div>
-            <a href="programs.html" class="custom-navbar__link">Programs</a>
             <a href="media.html" class="custom-navbar__link">Media</a>
             <a href="contact.html" class="custom-navbar__link">Contact</a>
         </nav>
@@ -83,98 +83,206 @@
                     Our Board of Directors guides Rugare's long-term vision, ensures responsible stewardship of resources, and upholds our commitment to youth-led mental health advocacy.
                 </p>
 
-                <div class="custom-team-grid">
-                    <!-- TODO: replace placeholder with real director content -->
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/IMG_5465.jpg" alt="Board director portrait placeholder" loading="lazy">
+                <div class="custom-team-toolbar" data-team-toolbar>
+                    <div class="custom-view-toggle" role="group" aria-label="Board view mode">
+                        <button type="button" class="custom-view-toggle__btn is-active" data-team-view="card" aria-pressed="true">Card</button>
+                        <button type="button" class="custom-view-toggle__btn" data-team-view="list" aria-pressed="false">List View</button>
+                        <span class="custom-view-toggle__indicator" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+                <div class="custom-team-view custom-team-view--card" data-team-panel="card">
+                    <div class="custom-team-grid">
+                        <!-- TODO: replace placeholder with real director content -->
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Chairperson"
+                            data-team="Chairperson"
+                            data-bio="Provides strategic leadership and guides the board in advancing Rugare's mission."
+                            data-image="assets/images/IMG_5465.jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/IMG_5465.jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Chairperson</p>
+                                <p class="custom-team-card__bio">Provides strategic leadership and guides the board in advancing Rugare's mission.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Vice Chairperson"
+                            data-team="Vice Chairperson"
+                            data-bio="Supports the chairperson and helps coordinate board priorities and decision-making."
+                            data-image="assets/images/ClubActivity.jpeg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/ClubActivity.jpeg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Vice Chairperson</p>
+                                <p class="custom-team-card__bio">Supports the chairperson and helps coordinate board priorities and decision-making.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Secretary"
+                            data-team="Secretary"
+                            data-bio="Oversees board records, communications, and documentation of organisational decisions."
+                            data-image="assets/images/club2.jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/club2.jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Secretary</p>
+                                <p class="custom-team-card__bio">Oversees board records, communications, and documentation of organisational decisions.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Treasurer"
+                            data-team="Treasurer"
+                            data-bio="Manages financial oversight and ensures transparent stewardship of Rugare's resources."
+                            data-image="assets/images/20250619_150002.jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/20250619_150002.jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Treasurer</p>
+                                <p class="custom-team-card__bio">Manages financial oversight and ensures transparent stewardship of Rugare's resources.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Board Member"
+                            data-team="Board Member"
+                            data-bio="Contributes expertise and guidance to strengthen Rugare's governance and community impact."
+                            data-image="assets/images/IMG_5283.jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/IMG_5283.jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Board Member</p>
+                                <p class="custom-team-card__bio">Contributes expertise and guidance to strengthen Rugare's governance and community impact.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Board Member"
+                            data-team="Board Member"
+                            data-bio="Supports organisational planning and upholds Rugare's values in decision-making."
+                            data-image="assets/images/club1%20(1).jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/club1%20(1).jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Board Member</p>
+                                <p class="custom-team-card__bio">Supports organisational planning and upholds Rugare's values in decision-making.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Board Member"
+                            data-team="Board Member"
+                            data-bio="Brings community perspective to board discussions and strategic direction."
+                            data-image="assets/images/IMG_5465.jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/IMG_5465.jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Board Member</p>
+                                <p class="custom-team-card__bio">Brings community perspective to board discussions and strategic direction.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Board Member"
+                            data-team="Board Member"
+                            data-bio="Advocates for inclusive, youth-centred approaches across Rugare's programmes."
+                            data-image="assets/images/ClubActivity.jpeg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/ClubActivity.jpeg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Board Member</p>
+                                <p class="custom-team-card__bio">Advocates for inclusive, youth-centred approaches across Rugare's programmes.</p>
+                            </div>
+                        </article>
+                        <article
+                            class="custom-team-card custom-team-card--board"
+                            data-team-member
+                            data-name="Director Name"
+                            data-role="Board Member"
+                            data-team="Board Member"
+                            data-bio="Helps ensure Rugare remains accountable, transparent, and mission-driven."
+                            data-image="assets/images/club2.jpg"
+                        >
+                            <div class="custom-team-card__photo">
+                                <img src="assets/images/club2.jpg" alt="Board director portrait placeholder" loading="lazy">
+                            </div>
+                            <div class="custom-team-card__body">
+                                <h3 class="custom-team-card__name">Director Name</h3>
+                                <p class="custom-team-card__role">Board Member</p>
+                                <p class="custom-team-card__bio">Helps ensure Rugare remains accountable, transparent, and mission-driven.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="custom-team-view custom-team-view--list" data-team-panel="list" hidden>
+                    <div class="custom-team-list-controls">
+                        <div class="custom-team-search">
+                            <label class="custom-team-search__label" for="board-search">Search directors</label>
+                            <input
+                                type="search"
+                                id="board-search"
+                                class="custom-team-search__input"
+                                placeholder="Search by name or role..."
+                                data-team-search
+                                autocomplete="off"
+                            >
                         </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Chairperson</p>
-                            <p class="custom-team-card__bio">Provides strategic leadership and guides the board in advancing Rugare's mission.</p>
+                        <div class="custom-team-filters" data-team-filters role="group" aria-label="Filter by role">
+                            <button type="button" class="custom-team-filter__btn is-active" data-team-filter="all" aria-pressed="true">All Roles</button>
+                            <button type="button" class="custom-team-filter__btn" data-team-filter="Chairperson" aria-pressed="false">Chairperson</button>
+                            <button type="button" class="custom-team-filter__btn" data-team-filter="Vice Chairperson" aria-pressed="false">Vice Chairperson</button>
+                            <button type="button" class="custom-team-filter__btn" data-team-filter="Secretary" aria-pressed="false">Secretary</button>
+                            <button type="button" class="custom-team-filter__btn" data-team-filter="Treasurer" aria-pressed="false">Treasurer</button>
+                            <button type="button" class="custom-team-filter__btn" data-team-filter="Board Member" aria-pressed="false">Board Member</button>
                         </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/ClubActivity.jpeg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Vice Chairperson</p>
-                            <p class="custom-team-card__bio">Supports the chairperson and helps coordinate board priorities and decision-making.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/club2.jpg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Secretary</p>
-                            <p class="custom-team-card__bio">Oversees board records, communications, and documentation of organisational decisions.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/20250619_150002.jpg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Treasurer</p>
-                            <p class="custom-team-card__bio">Manages financial oversight and ensures transparent stewardship of Rugare's resources.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/IMG_5283.jpg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Board Member</p>
-                            <p class="custom-team-card__bio">Contributes expertise and guidance to strengthen Rugare's governance and community impact.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/club1%20(1).jpg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Board Member</p>
-                            <p class="custom-team-card__bio">Supports organisational planning and upholds Rugare's values in decision-making.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/IMG_5465.jpg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Board Member</p>
-                            <p class="custom-team-card__bio">Brings community perspective to board discussions and strategic direction.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/ClubActivity.jpeg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Board Member</p>
-                            <p class="custom-team-card__bio">Advocates for inclusive, youth-centred approaches across Rugare's programmes.</p>
-                        </div>
-                    </article>
-                    <article class="custom-team-card custom-team-card--board">
-                        <div class="custom-team-card__photo">
-                            <img src="assets/images/club2.jpg" alt="Board director portrait placeholder" loading="lazy">
-                        </div>
-                        <div class="custom-team-card__body">
-                            <h3 class="custom-team-card__name">Director Name</h3>
-                            <p class="custom-team-card__role">Board Member</p>
-                            <p class="custom-team-card__bio">Helps ensure Rugare remains accountable, transparent, and mission-driven.</p>
-                        </div>
-                    </article>
+                    </div>
+                    <ul class="custom-team-directory" data-team-directory></ul>
+                    <p class="custom-team-directory__empty" data-team-directory-empty hidden>No directors match your search.</p>
                 </div>
             </div>
         </section>
