@@ -1830,6 +1830,7 @@ html.custom-reveal [data-reveal='scale'] {
   }
 
   .custom-navbar {
+    width: 100%;
     position: static;
     background: transparent;
     border-bottom: none;
@@ -2011,6 +2012,12 @@ html.custom-reveal [data-reveal='scale'] {
 @media (max-width: 640px) {
   .custom-container {
     width: calc(100% - 32px);
+  }
+
+  .custom-container.custom-navbar__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
   }
 
   .custom-navbar__inner {
