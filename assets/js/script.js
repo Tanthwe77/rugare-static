@@ -12,6 +12,7 @@
     initScrollReveal();
     initNavbarScroll();
     initMobileNav();
+    initNavDropdown();
     initBackToTop();
   });
 
@@ -34,6 +35,7 @@
       { parent: '.custom-grid-3', child: '.custom-impact-card', step: 55, variant: 'scale' },
       { parent: '.custom-values-grid', child: '.custom-value-card', step: 50 },
       { parent: '.custom-about-cards', child: '.custom-about-card', step: 55 },
+      { parent: '.custom-team-grid', child: '.custom-team-card', step: 50, variant: 'scale' },
       { parent: '.custom-stats-strip__grid', child: '.custom-stat', step: 45, variant: 'scale' },
       { parent: '.custom-program-block__gallery', child: '.custom-program-gallery__item', step: 40 },
       { parent: '.custom-episode-list', child: '.custom-episode', step: 50 },
@@ -200,6 +202,10 @@
       link.addEventListener('click', closeNav);
     });
 
+    nav.querySelectorAll('.custom-navbar__dropdown-link').forEach(function (link) {
+      link.addEventListener('click', closeNav);
+    });
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && document.body.classList.contains('custom-nav-open')) {
         closeNav();
@@ -210,6 +216,63 @@
       if (!isMobile()) {
         closeNav();
       }
+    });
+  }
+
+  function initNavDropdown() {
+    const dropdowns = document.querySelectorAll('[data-nav-dropdown]');
+    if (!dropdowns.length) return;
+
+    const mobileQuery = window.matchMedia('(max-width: 820px)');
+
+    function isMobile() {
+      return mobileQuery.matches;
+    }
+
+    function closeAll(except) {
+      dropdowns.forEach(function (dropdown) {
+        if (dropdown === except) return;
+        dropdown.classList.remove('is-open');
+        const trigger = dropdown.querySelector('[data-nav-dropdown-trigger]');
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    dropdowns.forEach(function (dropdown) {
+      const trigger = dropdown.querySelector('[data-nav-dropdown-trigger]');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', function (event) {
+        event.stopPropagation();
+        const isOpen = dropdown.classList.contains('is-open');
+
+        if (isMobile()) {
+          closeAll(isOpen ? null : dropdown);
+          dropdown.classList.toggle('is-open', !isOpen);
+          trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+          return;
+        }
+
+        closeAll(isOpen ? null : dropdown);
+        dropdown.classList.toggle('is-open', !isOpen);
+        trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+    });
+
+    document.addEventListener('click', function () {
+      closeAll();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeAll();
+      }
+    });
+
+    mobileQuery.addEventListener('change', function () {
+      closeAll();
     });
   }
 

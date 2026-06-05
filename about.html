@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Learn about Rugare Mental Health Organisation — our story, mission, vision, and values in Malawi.">
-    <title>About | Rugare Mental Health Organisation</title>
+    <title>Rugare Profile | Rugare Mental Health Organisation</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -34,7 +34,30 @@
                 </button>
             </div>
             <a href="index.html" class="custom-navbar__link">Home</a>
-            <a href="about.html" class="custom-navbar__link is-active">About</a>
+            <div class="custom-navbar__dropdown" data-nav-dropdown>
+                <button
+                    type="button"
+                    class="custom-navbar__link custom-navbar__dropdown-trigger is-active"
+                    data-nav-dropdown-trigger
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    aria-controls="about-nav-menu"
+                    id="about-nav-trigger"
+                >
+                    About
+                    <span class="custom-navbar__dropdown-chevron" aria-hidden="true"></span>
+                </button>
+                <div
+                    id="about-nav-menu"
+                    class="custom-navbar__dropdown-menu"
+                    role="menu"
+                    aria-labelledby="about-nav-trigger"
+                >
+                    <a href="about.html" class="custom-navbar__dropdown-link is-active" role="menuitem">Rugare Profile</a>
+                    <a href="board.html" class="custom-navbar__dropdown-link" role="menuitem">Board of Directors</a>
+                    <a href="our-team.html" class="custom-navbar__dropdown-link" role="menuitem">Our Team</a>
+                </div>
+            </div>
             <a href="programs.html" class="custom-navbar__link">Programs</a>
             <a href="media.html" class="custom-navbar__link">Media</a>
             <a href="contact.html" class="custom-navbar__link">Contact</a>
@@ -45,7 +68,7 @@
     <main class="custom-main" id="main-content">
         <section class="custom-page-banner">
             <div class="custom-container">
-                <h1 class="custom-page-banner__title">About Rugare</h1>
+                <h1 class="custom-page-banner__title">Rugare Profile</h1>
                 <p class="custom-page-banner__subtitle">
                     “Rugare” means peace in Shona — and that’s exactly what we’re working towards: peace of mind for every young person in our community.
                 </p>
@@ -117,7 +140,9 @@
                 <div class="custom-footer__col">
                     <div class="custom-footer__heading">Quick Links</div>
                     <ul class="custom-footer__list">
-                        <li><a class="custom-footer__link" href="about.html">About Us</a></li>
+                        <li><a class="custom-footer__link" href="about.html">Rugare Profile</a></li>
+                        <li><a class="custom-footer__link" href="board.html">Board of Directors</a></li>
+                        <li><a class="custom-footer__link" href="our-team.html">Our Team</a></li>
                         <li><a class="custom-footer__link" href="programs.html">Our Programs</a></li>
                         <li><a class="custom-footer__link" href="media.html">Podcast &amp; Media</a></li>
                         <li><a class="custom-footer__link" href="contact.html">Get In Touch</a></li>
@@ -128,7 +153,7 @@
                     <ul class="custom-footer__list">
                         <li class="custom-footer__contact">
                             <span class="custom-footer__icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l8 7 8-7" /></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none" /><path d="M4 6l8 7 8-7" /></svg>
                             </span>
                             <a class="custom-footer__link" href="mailto:rugarementalhealthorg@gmail.com">rugarementalhealthorg@gmail.com</a>
                         </li>
@@ -151,7 +176,7 @@
                 </div>
             </div>
             <div class="custom-footer__bottom">
-                © 2026 Rugare Mental Health Organisation. Made with <span class="custom-footer__heart">♥</span> in Malawi.
+                © 2026 Rugare Mental Health Organisation. Developed by <span class="custom-footer__heart">TM</span> +(265) 887188313
             </div>
         </div>
     </footer>
