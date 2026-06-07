@@ -17,6 +17,7 @@
     initMobileNav();
     initNavDropdown();
     initBackToTop();
+    initReadMore();
   });
 
   function prefersReducedMotion() {
@@ -873,5 +874,103 @@
     window.addEventListener('scroll', updateActive, { passive: true });
     window.addEventListener('resize', updateActive, { passive: true });
     updateActive();
+  }
+
+  function initReadMore() {
+    var selectors = [
+      '.custom-impact-card__text',
+      '.custom-about-card__text',
+      '.custom-media-card__text',
+      '.custom-value-card__text',
+      '.custom-episode__text',
+      '.custom-team-card__bio',
+      '.custom-program-card__text',
+    ];
+
+    document.querySelectorAll(selectors.join(', ')).forEach(function (textEl) {
+      if (textEl.dataset.readMoreInit === 'true') return;
+
+      if (textEl.closest('.custom-program-card')) {
+        var onlyChild = textEl.children.length === 1 ? textEl.children[0] : null;
+        if (
+          onlyChild &&
+          onlyChild.tagName === 'STRONG' &&
+          textEl.textContent.trim() === onlyChild.textContent.trim()
+        ) {
+          return;
+        }
+      }
+
+      textEl.dataset.readMoreInit = 'true';
+      textEl.classList.add('custom-read-more__text', 'is-clamped');
+
+      var toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'custom-read-more__toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Read more';
+      toggle.hidden = true;
+
+      function isOverflowing() {
+        textEl.classList.remove('is-clamped', 'is-expanded');
+        var fullHeight = textEl.offsetHeight;
+        textEl.classList.add('is-clamped');
+        var clampedHeight = textEl.offsetHeight;
+        return fullHeight > clampedHeight + 2;
+      }
+
+      function setExpanded(expanded) {
+        textEl.classList.toggle('is-expanded', expanded);
+        textEl.classList.toggle('is-clamped', !expanded);
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        toggle.textContent = expanded ? 'Read less' : 'Read more';
+      }
+
+      function updateClampState() {
+        if (textEl.classList.contains('is-expanded')) return;
+
+        if (isOverflowing()) {
+          textEl.classList.add('is-clamped');
+          toggle.hidden = false;
+          if (!toggle.isConnected) {
+            textEl.insertAdjacentElement('afterend', toggle);
+          }
+        } else {
+          textEl.classList.remove('is-clamped', 'is-expanded');
+          toggle.hidden = true;
+        }
+      }
+
+      toggle.addEventListener('click', function () {
+        var expanded = !textEl.classList.contains('is-expanded');
+        setExpanded(expanded);
+        if (!expanded) {
+          updateClampState();
+        }
+      });
+
+      function scheduleMeasure() {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(updateClampState);
+        });
+      }
+
+      scheduleMeasure();
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(scheduleMeasure).catch(function () {});
+      }
+
+      if (typeof ResizeObserver !== 'undefined') {
+        var observer = new ResizeObserver(function () {
+          if (!textEl.classList.contains('is-expanded')) {
+            updateClampState();
+          }
+        });
+        observer.observe(textEl);
+      } else {
+        window.addEventListener('resize', updateClampState, { passive: true });
+      }
+    });
   }
 })();
